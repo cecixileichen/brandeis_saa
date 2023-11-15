@@ -1,0 +1,53 @@
+<h2>Users Table</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Graduation Year</th>
+      <th>Job</th>
+      <th>Company</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Zip Code</th>
+      <th>Bio</th>
+      <th>Interest</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% locals.users.forEach(user => { %>
+    <tr>
+      <td>
+        <a href="<%= `/users/${user._id}` %>"> <%= user.name %> </a>
+      </td>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td><%= user.graduationYear %></td>
+      <td><%= user.job %></td>
+      <td><%= user.company %></td>
+      <td><%= user.city %></td>
+      <td><%= user.state %></td>
+      <td><%= user.country %></td>
+      <td><%= user.zipCode %></td>
+      <td><%= user.bio %></td>
+      <td><%= user.interest %></td>
+      <td><%= user.id %></td>
+      <td>
+        <a href="<%=`/users/${user._id}/edit` %>"> Edit </a>
+      </td>
+      <td>
+        <a
+          href="<%= `users/${user._id}/delete?_method=DELETE` %>"
+          onclick="return confirm('Are you sure you want to delete this record?')"
+          >
+            Delete
+          </a>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<a href="<%=`/users/new` %>"> create a new user </a>

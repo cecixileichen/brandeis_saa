@@ -1,0 +1,60 @@
+<html>
+
+  <head>
+
+    <title>Brandeis</title>
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+  
+  <body>
+    
+    <header>
+
+      <img id="header-img" src="/images/BrandeisLogo.png" alt="Brandeis Logo"/>
+
+      <p id="title">Brandeis</p>
+      <p id="sub-title">
+
+          Student and Alumni<br />
+          Association
+
+      </p>
+
+    </header>
+
+    <nav>
+
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/jobs">Jobs</a>
+      <a href="/event">Event</a>
+      <a href="/contact">Contact</a>
+
+      <a href="https://www.facebook.com/brandeisuniversity" class="fa fa-facebook"></a>
+      <a href="https://www.instagram.com/brandeisuniversity/" class="fa fa-instagram"></a>
+      <a href="https://www.linkedin.com/school/brandeis-university/" class="fa fa-linkedin"></a>
+      <a href="https://www.youtube.com/brandeis" class="fa fa-youtube"></a>
+      <a href="https://twitter.com/BrandeisU" class="fa fa-twitter"></a>
+
+    </nav>
+    
+    <div class="flashes">
+      <% if(flashMessages) {%>
+        <% if (flashMessages.success) { %>
+          <div class="flash success"><%= flashMessages.success %></div>
+        <% } else if (flashMessages.error) { %>
+          <div class="flash error"><%= flashMessages.error %></div>
+        <% } %>
+      <% } %>
+    </div>
+
+    <%- body%>
+
+    <footer>©2023 Brandeis University</footer>
+
+  </body>
+
+</html>
