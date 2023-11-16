@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<h2>Events List!</h2>
+
+    <% events.forEach(event => { %>
+
+    <div class="item">
+
+        <div class="title-des">
+
+            <p> Title: <a href="<%= `/events/${event._id}` %>"> <%= event.title %> </a> </h3> </br>
+            <p> Description: <%= event.description %> </p>
+
+        </div>
+
+        <div class="detail-info">
+
+            <p> Location: <%= event.location %> </p>
+            <p> Start Date: <%= event.startDate %> </p>
+            <p> End Date: <%= event.endDate %> </p>
+            <p> Type: <%= event.isOnLine %> </p>
+            
+        </div>
+
+    </div>
+ 
+    <% }) %>
+
+<a href="<%=`/events/new` %>"> create a new event </a>

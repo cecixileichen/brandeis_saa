@@ -13,6 +13,7 @@ const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
 const usersController = require("./controllers/usersController");
 const jobsController = require("./controllers/jobsController");
+const eventsController = require("./controllers/eventsController");
 
 //setup mongoose
 mongoose.connect("mongodb://localhost:27017/brandeis_saa");
@@ -58,8 +59,6 @@ app.use("/", router);
 router.get("/", homeController.respondHome);
 router.get("/about", homeController.respondAbout);
 router.get("/contact", homeController.respondContact);
-router.get("/event", homeController.respondEvent);
-router.get("/jobs", homeController.respondJobs);
 
 //CRUD for users
 router.get("/users", usersController.index, usersController.indexView);
@@ -78,6 +77,16 @@ router.get("/jobs/:id/edit", jobsController.edit);
 router.put("/jobs/:id/update", jobsController.update, jobsController.redirectView);
 router.get("/jobs/:id", jobsController.show, jobsController.showView);
 router.delete("/jobs/:id/delete", jobsController.delete, jobsController.redirectView);
+
+//CRUD for events
+router.get("/events", eventsController.index, eventsController.indexView);
+router.get("/events/new", eventsController.new);
+router.post("/events/create", eventsController.create, eventsController.redirectView);
+router.get("/events/:id/edit", eventsController.edit);
+router.put("/events/:id/update", eventsController.update, eventsController.redirectView);
+router.get("/events/:id", eventsController.show, eventsController.showView);
+router.post("/events/:id/register", eventsController.register, eventsController.redirectView);
+router.delete("/events/:id/delete", eventsController.delete, eventsController.redirectView);
 
 //set error routs
 router.use(errorController.pageNotFoundError);

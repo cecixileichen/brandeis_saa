@@ -19,7 +19,6 @@ const getJobParams = (body) => {
     index: (req, res, next) => {
       Job.find()
         .then((jobs) => {
-          console.log(jobs)
           res.locals.jobs = jobs;
           next();
         })
@@ -29,7 +28,6 @@ const getJobParams = (body) => {
       });
     },
     indexView: (req, res) => {
-      console.log("asdf")
       res.render("jobs/index");
     },
     new: (req, res) => {
@@ -79,7 +77,7 @@ const getJobParams = (body) => {
     },
     edit: (req, res, next) => {
       let jobId = req.params.id;
-      User.findById(jobId)
+      Job.findById(jobId)
         .then((job) => {
           res.render("jobs/edit", {
             job: job,
@@ -93,7 +91,7 @@ const getJobParams = (body) => {
     update: (req, res, next) => {
       let jobId = req.params.id,
         jobParams = getJobParams(req.body);
-      User.findByIdAndUpdate(jobId, {
+      Job.findByIdAndUpdate(jobId, {
         $set: jobParams,
       })
         .then((job) => {
@@ -108,7 +106,7 @@ const getJobParams = (body) => {
     },
     delete: (req, res, next) => {
       let jobId = req.params.id;
-      User.findByIdAndDelete(jobId)
+      Job.findByIdAndDelete(jobId)
         .then(() => {
           res.locals.redirect = "/jobs";
           next();

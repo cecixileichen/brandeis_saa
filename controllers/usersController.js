@@ -19,6 +19,7 @@ const getUserParams = (body) => {
 
   module.exports = {
     index: (req, res, next) => {
+      console.log("asdf")
       User.find()
         .then((users) => {
           console.log(users)

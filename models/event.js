@@ -45,14 +45,10 @@ const eventSchema = mongoose.Schema(
           attendees: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
+            require: false,
           }],
 
     },
-
-    {
-        timestamps: true,
-    }
-
 )
 
 module.exports = mongoose.model("Event", eventSchema)
